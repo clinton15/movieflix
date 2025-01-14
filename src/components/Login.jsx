@@ -2,6 +2,11 @@ import Header from "./Header";
 import bgImage from "../assets/background.jpg";
 import { useState, useRef } from "react";
 import { validateFormFields } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const name = useRef(null);
@@ -14,13 +19,47 @@ const Login = () => {
   };
 
   const handleSubmitForm = () => {
-    let isValid = validateFormFields(
+    let isInvalid = validateFormFields(
       email.current.value,
       password.current.value
     );
-    console.log(isValid);
+    setErrorMessage(isInvalid);
+    if (isInvalid) return;
 
-    setErrorMessage(isValid);
+    if (isSignUpForm) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+          // ..
+        });
+    } else {
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    }
   };
 
   return (
