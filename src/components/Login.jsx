@@ -1,11 +1,26 @@
 import Header from "./Header";
 import bgImage from "../assets/background.jpg";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { validateFormFields } from "../utils/validate";
 
 const Login = () => {
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
   const [isSignUpForm, setIsSignUpForm] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const handleButtonClick = () => {
     setIsSignUpForm(!isSignUpForm);
+  };
+
+  const handleSubmitForm = () => {
+    let isValid = validateFormFields(
+      email.current.value,
+      password.current.value
+    );
+    console.log(isValid);
+
+    setErrorMessage(isValid);
   };
 
   return (
@@ -14,7 +29,11 @@ const Login = () => {
       <div className="-z-10 opacity-50">
         <img src={bgImage} alt="background-image" />
       </div>
-      <form className="z-40 absolute w-4/12 my-36 mx-auto p-12 right-0 left-0 top-0 text-white bg-black flex-col opacity-75">
+      <form
+        method="post"
+        onSubmit={(e) => e.preventDefault()}
+        className="z-40 absolute w-4/12 my-36 mx-auto p-12 right-0 left-0 top-0 text-white bg-black flex-col opacity-75"
+      >
         <h1 className="font-bold text-3xl mb-8">
           {isSignUpForm ? "Sign Up" : "Sign In"}
         </h1>
@@ -22,24 +41,30 @@ const Login = () => {
           <input
             className="flex my-4 p-2 w-full bg-black text-white border-2 border-opacity-5 border-white-100 rounded"
             type="input"
+            ref={name}
             placeholder="Full Name"
           />
         )}
         <input
           className="flex my-4 p-2 w-full bg-black text-white border-2 border-opacity-5 border-white-100 rounded"
           type="input"
+          ref={email}
           placeholder="Email address"
         />
         <input
           className="flex my-4 p-2 w-full bg-black text-white border-2 border-opacity-5 border-white-100 rounded"
           type="input"
+          ref={password}
           placeholder="Password"
         />
-        <input
-          type="button"
-          className="flex my-4 p-2 w-full bg-red-600 text-white cursor-pointer hover:bg-red-800 rounded"
-          value={isSignUpForm ? "Sign Up" : "Sign In"}
-        />
+        {errorMessage && <p className="text-red-600 text-sm">{errorMessage}</p>}
+        <button
+          type="submit"
+          className="flex my-4 p-2 w-full justify-center bg-red-600 text-white cursor-pointer hover:bg-red-800 rounded"
+          onClick={handleSubmitForm}
+        >
+          {isSignUpForm ? "Sign Up" : "Sign In"}
+        </button>
         <p>
           {isSignUpForm ? "Already registered, " : "New to Netflix? "}
           <span
