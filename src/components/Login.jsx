@@ -10,6 +10,7 @@ import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "firebase/auth";
 import { addUser } from "../utils/userSlice";
+import { AVATAR } from "../utils/constants";
 
 const Login = () => {
   const name = useRef(null);
@@ -42,7 +43,7 @@ const Login = () => {
           updateProfile(user, {
             displayName: name.current.value,
             photoURL:
-              "https://img.icons8.com/?size=100&id=z-JBA_KtSkxG&format=png&color=000000",
+            AVATAR,
           })
             .then(() => {
               // Profile updated!

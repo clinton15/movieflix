@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
+import { ROUTES } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -27,12 +28,12 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        navigate("/browse");
+        navigate(ROUTES.browse);
 
         // ...
       } else {
         dispatch(removeUser());
-        navigate("/");
+        navigate(ROUTES.home);
       }
     });
 
