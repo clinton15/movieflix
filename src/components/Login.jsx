@@ -7,11 +7,17 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { updateProfile } from "firebase/auth";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isSignUpForm, setIsSignUpForm] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const handleButtonClick = () => {
@@ -35,9 +41,27 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
-
-          // ...
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL:
+              "https://img.icons8.com/?size=100&id=z-JBA_KtSkxG&format=png&color=000000",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -46,12 +70,16 @@ const Login = () => {
           // ..
         });
     } else {
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-
+          navigate("/browse");
           // ...
         })
         .catch((error) => {
@@ -92,7 +120,7 @@ const Login = () => {
         />
         <input
           className="flex my-4 p-2 w-full bg-black text-white border-2 border-opacity-5 border-white-100 rounded"
-          type="input"
+          type="password"
           ref={password}
           placeholder="Password"
         />
