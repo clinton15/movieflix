@@ -14,3 +14,7 @@ export const ROUTES = {
   home: "/",
   browse: "/browse",
 };
+
+export const API_URLS = {
+  nowPlaying: "https://api.themoviedb.org/3/movie/now_playing?page=1",
+};
