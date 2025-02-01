@@ -52,15 +52,16 @@ const Header = () => {
   };
 
   return (
-    <>
-      <div className="absolute w-48 left-32 z-10">
+    <div className="absolute flex justify-between w-[100%]">
+      {/* <div className="ml-32 w-48"> */}
+      <div className="relative left-32 w-48 z-10">
         <img src={logo} alt="netflix-logo" />
       </div>
       {user && (
-        <div className="flex py-4 pr-4">
+        <div className="relative right-0 flex py-4 pr-4">
           <img className="w-12 h-12" alt="usericon" src={user?.photoURL} />
           <button
-            className="flex p-4 font-bold"
+            className="flex p-4 font-bold text-white"
             type="button"
             onClick={handleSignOut}
           >
@@ -68,7 +69,7 @@ const Header = () => {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
