@@ -8,10 +8,12 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
 import { ROUTES } from "../utils/constants";
+import { toggleGptSearch } from "../utils/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt?.showGptSearch);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -51,6 +53,10 @@ const Header = () => {
       });
   };
 
+  const handleGptSearch = () => {
+    dispatch(toggleGptSearch());
+  };
+
   return (
     <div className="absolute flex justify-between w-[100%]">
       {/* <div className="ml-32 w-48"> */}
@@ -58,7 +64,16 @@ const Header = () => {
         <img src={logo} alt="netflix-logo" />
       </div>
       {user && (
-        <div className="relative right-0 flex py-4 pr-4">
+        <div className="relative right-0 flex py-4 pr-4 z-10">
+          <div>
+            <button
+              className="bg-purple-600 text-white rounded-lg p-2 mx-4 my-1"
+              type="button"
+              onClick={handleGptSearch}
+            >
+              {showGptSearch ? "GPT Search" : "Home"}
+            </button>
+          </div>
           <img className="w-12 h-12" alt="usericon" src={user?.photoURL} />
           <button
             className="flex p-4 font-bold text-white"
