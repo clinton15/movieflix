@@ -7,12 +7,14 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "firebase/auth";
 import { addUser } from "../utils/userSlice";
 import { AVATAR } from "../utils/constants";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -42,8 +44,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-            AVATAR,
+            photoURL: AVATAR,
           })
             .then(() => {
               // Profile updated!
@@ -76,7 +77,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
           // ...
         })
         .catch((error) => {
@@ -99,27 +99,27 @@ const Login = () => {
         className="z-40 absolute w-4/12 my-36 mx-auto p-12 right-0 left-0 top-0 text-white bg-black flex-col opacity-75"
       >
         <h1 className="font-bold text-3xl mb-8">
-          {isSignUpForm ? "Sign Up" : "Sign In"}
+          {isSignUpForm ? t("login.signUp") : t("login.signIn")}
         </h1>
         {isSignUpForm && (
           <input
             className="flex my-4 p-2 w-full bg-black text-white border-2 border-opacity-5 border-white-100 rounded"
             type="input"
             ref={name}
-            placeholder="Full Name"
+            placeholder={t("login.fullNamePlaceholder")}
           />
         )}
         <input
           className="flex my-4 p-2 w-full bg-black text-white border-2 border-opacity-5 border-white-100 rounded"
           type="input"
           ref={email}
-          placeholder="Email address"
+          placeholder={t("login.emailPlaceholder")}
         />
         <input
           className="flex my-4 p-2 w-full bg-black text-white border-2 border-opacity-5 border-white-100 rounded"
           type="password"
           ref={password}
-          placeholder="Password"
+          placeholder={t("login.passwordPlaceholder")}
         />
         {errorMessage && <p className="text-red-600 text-sm">{errorMessage}</p>}
         <button
@@ -127,15 +127,15 @@ const Login = () => {
           className="flex my-4 p-2 w-full justify-center bg-red-600 text-white cursor-pointer hover:bg-red-800 rounded"
           onClick={handleSubmitForm}
         >
-          {isSignUpForm ? "Sign Up" : "Sign In"}
+          {isSignUpForm ? t("login.signUp") : t("login.signIn")}
         </button>
         <p>
-          {isSignUpForm ? "Already registered, " : "New to Netflix? "}
+          {isSignUpForm ? t("login.alreadyRegistered") : t("login.newToNetflix")}
           <span
             className="font-bold text-white cursor-pointer hover:underline"
             onClick={handleButtonClick}
           >
-            {isSignUpForm ? "Sign In" : "Sign up now."}
+            {isSignUpForm ? t("login.signIn") : t("login.signUpNow")}
           </span>
         </p>
       </form>

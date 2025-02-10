@@ -1,0 +1,24 @@
+{
+  "login": {
+    "signUp": "Melden Sie sich an",
+    "signIn": "anmelden",
+    "fullNamePlaceholder": "vollständiger Name",
+    "emailPlaceholder": "Passwort",
+    "passwordPlaceholder": "Passwort",
+    "signUpNow": "Melden Sie sich jetzt an",
+    "alreadyRegistered": "bereits registriert, ",
+    "newToNetflix": "Neu bei Netflix? ",
+    "signOut": "Abmelden"
+  },
+  "browse": {
+    "play": "spielen",
+    "moreInfo": "Weitere Informationen",
+    "nowPlaying": "jetzt spielen",
+    "upcoming": "bevorstehende",
+    "topRated": "Top bewertet",
+    "popular": "beliebt",
+    "english": "Englisch",
+    "hindi": "Hindi",
+    "german": "Deutsch"
+  }
+}

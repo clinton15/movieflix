@@ -1,0 +1,24 @@
+{
+  "login": {
+    "signUp": "साइन अप करें",
+    "signIn": "दाखिल करना",
+    "fullNamePlaceholder": "पूरा नाम",
+    "emailPlaceholder": "मेल पता",
+    "passwordPlaceholder": "पासवर्ड",
+    "signUpNow": "अभी साइनअप करें",
+    "alreadyRegistered": "पहले से ही पंजीकृत, ",
+    "newToNetflix": "नेटफ्लिक्स पर नए हैं? ",
+    "signOut": "साइन आउट "
+  },
+  "browse": {
+    "play": "खेल",
+    "moreInfo": "और जानकारी",
+    "nowPlaying": "अब खेल रहे हैं",
+    "upcoming": "आगामी",
+    "topRated": "टॉप रेटेड",
+    "popular": "लोकप्रिय",
+    "english": "अंग्रेज़ी",
+    "hindi": "हिन्दी",
+    "german": "जर्मन"
+  }
+}

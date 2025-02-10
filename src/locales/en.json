@@ -1,0 +1,24 @@
+{
+  "login": {
+    "signUp": "Sign Up",
+    "signIn": "Sign In",
+    "fullNamePlaceholder": "Full Name",
+    "emailPlaceholder": "Email address",
+    "passwordPlaceholder": "Password",
+    "signUpNow": "Sign up now",
+    "alreadyRegistered": "Already registered, ",
+    "newToNetflix": "New to Netflix? ",
+    "signOut": "Sign Out"
+  },
+  "browse": {
+    "play": "Play",
+    "moreInfo": "More Info",
+    "nowPlaying": "Now Playing",
+    "upcoming": "Upcoming",
+    "topRated": "Top Rated",
+    "popular": "Popular",
+    "english": "English",
+    "hindi": "Hindi",
+    "german": "German"
+  }
+}

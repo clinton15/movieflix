@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
+import { useTranslation } from "react-i18next";
 
 const SecondaryContainer = () => {
+  const { t } = useTranslation();
   const nowPlayingMovies = useSelector(
     (store) => store.movies?.nowPlayingMovies
   );
@@ -13,11 +15,11 @@ const SecondaryContainer = () => {
     <div className="bg-black pb-10 px-8">
       <div className="-mt-56 relative z-20">
         {" "}
-        <MovieList title="Now Playing" movies={nowPlayingMovies} />{" "}
+        <MovieList title={t("browse.nowPlaying")} movies={nowPlayingMovies} />{" "}
       </div>
-      <MovieList title="Popular" movies={popularMovies} />
-      <MovieList title="Top Rated" movies={topRatedMovies} />
-      <MovieList title="Upcoming" movies={upcomingMovies} />
+      <MovieList title={t("browse.popular")} movies={popularMovies} />
+      <MovieList title={t("browse.topRated")} movies={topRatedMovies} />
+      <MovieList title={t("browse.upcoming")} movies={upcomingMovies} />
     </div>
   );
 };

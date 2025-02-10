@@ -6,15 +6,18 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { addUser, removeUser } from "../utils/userSlice";
+import { addUser, removeUser, changeLang } from "../utils/userSlice";
 import { ROUTES } from "../utils/constants";
-import { toggleGptSearch } from "../utils/gptSlice";
+// import { toggleGptSearch } from "../utils/gptSlice";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const navigate = useNavigate();
-  const user = useSelector((store) => store.user);
-  const showGptSearch = useSelector((store) => store.gpt?.showGptSearch);
+  const user = useSelector((store) => store.user?.user);
+  const lang = useSelector(store => store.user.lang);
+  // const showGptSearch = useSelector((store) => store.gpt?.showGptSearch);
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -53,8 +56,14 @@ const Header = () => {
       });
   };
 
-  const handleGptSearch = () => {
-    dispatch(toggleGptSearch());
+  // const handleGptSearch = () => {
+  //   dispatch(toggleGptSearch());
+  // };
+
+  const handleLanguageChange = (e) => {
+    let updatedLang = e.target.value;
+    i18n.changeLanguage(updatedLang);
+    dispatch(changeLang(updatedLang));
   };
 
   return (
@@ -66,22 +75,32 @@ const Header = () => {
       {user && (
         <div className="relative right-0 flex py-4 pr-4 z-10">
           <div>
-            <button
+            <select
+              className="mx-4 my-1 p-2 bg-black text-white opacity-70 border-white border-2 rounded-md"
+              name="lang"
+              id="lang"
+              onChange={handleLanguageChange}
+            >
+              <option value="en">{t("browse.english")}</option>
+              <option value="hi">{t("browse.hindi")}</option>
+              <option value="de">{t("browse.german")}</option>
+            </select>
+            {/* <button
               className="bg-purple-600 text-white rounded-lg p-2 mx-4 my-1"
               type="button"
               onClick={handleGptSearch}
             >
               {showGptSearch ? "GPT Search" : "Home"}
-            </button>
+            </button> */}
           </div>
-          <img className="w-12 h-12" alt="usericon" src={user?.photoURL} />
-          <button
-            className="flex p-4 font-bold text-white"
-            type="button"
-            onClick={handleSignOut}
-          >
-            Sign Out
-          </button>
+          {/* <img className="w-12 h-12" alt="usericon" src={user?.photoURL} /> */}
+          {user && (
+            <div className="flex p-4 font-bold text-white">
+              <button type="button" onClick={handleSignOut}>
+                {t("login.signOut")}
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
