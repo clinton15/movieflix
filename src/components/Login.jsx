@@ -90,15 +90,19 @@ const Login = () => {
   return (
     <div className="bg-black h-screen z-0">
       <Header />
-      <div className="-z-10 opacity-50">
-        <img src={bgImage} alt="background-image" />
+      <div className="h-screen -z-10 opacity-50">
+        <img
+          className="h-screen object-cover w-[100%] md:h-[100%]"
+          src={bgImage}
+          alt="background-image"
+        />
       </div>
       <form
         method="post"
         onSubmit={(e) => e.preventDefault()}
-        className="z-40 absolute w-4/12 my-36 mx-auto p-12 right-0 left-0 top-0 text-white bg-black flex-col opacity-75"
+        className="z-40 absolute md:w-1/2 lg:w-1/3 my-36 mx-auto p-12 right-0 left-0 w-3/4 top-[14%] mt-10 text-white bg-black flex-col opacity-75"
       >
-        <h1 className="font-bold text-3xl mb-8">
+        <h1 className="font-bold text-2xl md:text-3xl mb-8">
           {isSignUpForm ? t("login.signUp") : t("login.signIn")}
         </h1>
         {isSignUpForm && (
@@ -129,8 +133,12 @@ const Login = () => {
         >
           {isSignUpForm ? t("login.signUp") : t("login.signIn")}
         </button>
-        <p>
-          {isSignUpForm ? t("login.alreadyRegistered") : t("login.newToNetflix")}
+        <p className="flex flex-wrap">
+          <span className="pr-2">
+            {isSignUpForm
+              ? t("login.alreadyRegistered")
+              : t("login.newToNetflix")}
+          </span>
           <span
             className="font-bold text-white cursor-pointer hover:underline"
             onClick={handleButtonClick}

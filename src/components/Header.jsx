@@ -69,7 +69,7 @@ const Header = () => {
   return (
     <div className="absolute flex justify-between w-[100%]">
       {/* <div className="ml-32 w-48"> */}
-      <div className="relative left-32 w-48 z-10">
+      <div className="relative left-[10%] md:left-32 w-36 md:w-48 z-10">
         <img src={logo} alt="netflix-logo" />
       </div>
       {user && (
