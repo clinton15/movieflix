@@ -69,7 +69,7 @@ const Header = () => {
   return (
     <div className="absolute flex justify-around sm:justify-between w-[100%] flex-wrap">
       {/* <div className="ml-32 w-48"> */}
-      <div className="flex relative p-4 sm:p-0 sm:mt-0 sm:left-32 w-44 sm:w-48 z-10">
+      <div className="flex relative p-2 sm:mt-0 sm:left-32 w-44 sm:w-48 z-10">
         <img src={logo} alt="netflix-logo" />
       </div>
       {user && (
