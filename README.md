@@ -1,6 +1,7 @@
-# React + Vite
+# Movieflix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The developer is making changes to this space. The content will be available as soon as possible.
+<!-- This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
 
@@ -11,5 +12,5 @@ Currently, two official plugins are available:
 - used vite to set up app
 - installed tailwind CSS and react router libraries
 - login screen
-    - header
+    - header -->
     
