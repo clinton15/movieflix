@@ -137,7 +137,7 @@ const Login = () => {
           <span className="pr-2">
             {isSignUpForm
               ? t("login.alreadyRegistered")
-              : t("login.newToNetflix")}
+              : t("login.newToMovietflix")}
           </span>
           <span
             className="font-bold text-white cursor-pointer hover:underline"
