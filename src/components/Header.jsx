@@ -67,16 +67,16 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute flex justify-between w-[100%]">
+    <div className="absolute flex justify-around sm:justify-between w-[100%] flex-wrap">
       {/* <div className="ml-32 w-48"> */}
-      <div className="relative left-[10%] md:left-32 w-36 md:w-48 z-10">
+      <div className="flex relative p-4 sm:p-0 sm:mt-0 sm:left-32 w-44 sm:w-48 z-10">
         <img src={logo} alt="netflix-logo" />
       </div>
       {user && (
-        <div className="relative right-0 flex py-4 pr-4 z-10">
-          <div>
+        <div className="relative flex-row sm:left-0 sm:right-0 flex py-4 pr-4 z-10">
+          <div className="content-center">
             <select
-              className="mx-4 my-1 p-2 bg-black text-white opacity-70 border-white border-2 rounded-md"
+              className="mx-4 my-1 p-1 sm:p-2 bg-black text-white opacity-70 border-white border-2 rounded-md"
               name="lang"
               id="lang"
               onChange={handleLanguageChange}
@@ -94,13 +94,13 @@ const Header = () => {
             </button> */}
           </div>
           {/* <img className="w-12 h-12" alt="usericon" src={user?.photoURL} /> */}
-          {user && (
-            <div className="flex p-4 font-bold text-white">
+          {/* {user && ( */}
+            <div className="flex mx-2 p-2 font-bold text-white">
               <button type="button" onClick={handleSignOut}>
                 {t("login.signOut")}
               </button>
             </div>
-          )}
+          {/* )} */}
         </div>
       )}
     </div>
