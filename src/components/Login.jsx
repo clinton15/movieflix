@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateProfile } from "firebase/auth";
 import { addUser } from "../utils/userSlice";
 import { AVATAR } from "../utils/constants";
@@ -21,17 +21,22 @@ const Login = () => {
   const dispatch = useDispatch();
   const [isSignUpForm, setIsSignUpForm] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const handleButtonClick = () => {
     setIsSignUpForm(!isSignUpForm);
   };
 
   const handleSubmitForm = () => {
+    setIsLoading(true);
     let isInvalid = validateFormFields(
       email.current.value,
       password.current.value
     );
     setErrorMessage(isInvalid);
-    if (isInvalid) return;
+    if (isInvalid) {
+      setIsLoading(false);
+      return;
+    }
 
     if (isSignUpForm) {
       createUserWithEmailAndPassword(
@@ -47,6 +52,7 @@ const Login = () => {
             photoURL: AVATAR,
           })
             .then(() => {
+              setIsLoading(false);
               // Profile updated!
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
@@ -59,14 +65,15 @@ const Login = () => {
               );
             })
             .catch((error) => {
+              setIsLoading(false);
               setErrorMessage(error.message);
             });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          setIsLoading(false);
           setErrorMessage(errorCode + "-" + errorMessage);
-          // ..
         });
     } else {
       signInWithEmailAndPassword(
@@ -75,6 +82,7 @@ const Login = () => {
         password.current.value
       )
         .then((userCredential) => {
+          setIsLoading(false);
           // Signed in
           const user = userCredential.user;
           // ...
@@ -82,6 +90,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          setIsLoading(false);
           setErrorMessage(errorCode + "-" + errorMessage);
         });
     }
@@ -131,6 +140,9 @@ const Login = () => {
           className="flex my-4 p-2 w-full justify-center bg-red-600 text-white cursor-pointer hover:bg-red-800 rounded"
           onClick={handleSubmitForm}
         >
+          {isLoading && (
+            <div className="h-5 w-5 mr-2 mt-0.5 animate-spin rounded-full border-b-2 border-current" />
+          )}
           {isSignUpForm ? t("login.signUp") : t("login.signIn")}
         </button>
         <p className="flex flex-wrap">

@@ -13,13 +13,13 @@ const SecondaryContainer = () => {
 
   return (
     <div className="bg-black pb-10 px-8">
-      <div className="mt-0 md:-mt-16 lg:-mt-56 relative z-20">
+      {nowPlayingMovies && <div className="mt-0 md:-mt-16 lg:-mt-56 relative z-20">
         {" "}
         <MovieList title={t("browse.nowPlaying")} movies={nowPlayingMovies} />{" "}
-      </div>
-      <MovieList title={t("browse.popular")} movies={popularMovies} />
-      <MovieList title={t("browse.topRated")} movies={topRatedMovies} />
-      <MovieList title={t("browse.upcoming")} movies={upcomingMovies} />
+      </div>}
+      {popularMovies && <MovieList title={t("browse.popular")} movies={popularMovies} />}
+      {topRatedMovies && <MovieList title={t("browse.topRated")} movies={topRatedMovies} />}
+      {upcomingMovies && <MovieList title={t("browse.upcoming")} movies={upcomingMovies} />}
     </div>
   );
 };
