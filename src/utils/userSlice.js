@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { SLICE_NAMES, DEFAULT_LANGUAGE } from "./constants";
 const userSlice = createSlice({
-  name: "user",
+  name: SLICE_NAMES.user,
   initialState: {
     user: null,
-    lang: "en",
+    lang: DEFAULT_LANGUAGE,
   },
   reducers: {
     addUser: (state, action) => {

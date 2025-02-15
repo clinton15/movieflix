@@ -8,7 +8,9 @@
     "signUpNow": "अभी साइनअप करें",
     "alreadyRegistered": "पहले से ही पंजीकृत, ",
     "newToMovietflix": "क्या आप मूवीफ्लिक्स में नए हैं?",
-    "signOut": "साइन आउट "
+    "signOut": "साइन आउट ",
+    "invalidEmail": "ईमेल पता अमान्य है",
+    "invalidPassword": "पासवर्ड अमान्य है"
   },
   "browse": {
     "play": "खेल",

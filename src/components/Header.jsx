@@ -51,7 +51,7 @@ const Header = () => {
         // Sign-out successful.
       })
       .catch((error) => {
-        navigate("/error");
+        navigate(ROUTES.error);
         // An error happened.
       });
   };

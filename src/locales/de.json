@@ -8,7 +8,9 @@
     "signUpNow": "Melden Sie sich jetzt an",
     "alreadyRegistered": "bereits registriert, ",
     "newToMovietflix": "Neu bei Movieflix? ",
-    "signOut": "Abmelden"
+    "signOut": "Abmelden",
+    "invalidEmail": "E-Mail-Adresse ist ungültig",
+    "invalidPassword": "Das Passwort ist ungültig"
   },
   "browse": {
     "play": "spielen",

@@ -8,7 +8,9 @@
     "signUpNow": "Sign up now",
     "alreadyRegistered": "Already registered, ",
     "newToMovietflix": "New to Movieflix? ",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "invalidEmail": "Email address is invalid",
+    "invalidPassword": "Password is invalid"
   },
   "browse": {
     "play": "Play",
