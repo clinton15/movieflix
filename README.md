@@ -41,24 +41,43 @@ Check out the live app: [Movieflix](https://movieflix-project.netlify.app)
 1. **Clone the Repository**:
    ```bash
    https://github.com/clinton15/movieflix.git
+   ```
 2. **Navigate to the Project Directory:**
-    ```bash
+   ```bash
    cd movieflix
-3. **Install the dependencies**: 
-    ```bash
-    npm install
-4. **Start the Development Server:**
-    ```bash
-    npm run dev
+   ```
+3. **Install the dependencies**:
+   ```bash
+   npm install
+   ```
+4. **Set Up Environment Variables:**
+   - Create a .env file in the root directory.
+   - Add the following variables:
+   ```bash
+   VITE_TMDB_API_KEY=your_tmdb_api_key
+   VITE_FIREBASE_API_KEY=your_firebase_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+   VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+   VITE_FIREBASE_APP_ID=your_firebase_app_id
+   ```
+5. **Start the Development Server:**
+   ```bash
+   npm run dev
+   ```
+
 ---
 
 ### Screenshots
 
 #### Desktop View:
+
 ![](./src/assets/loginPreview.png)
 ![](./src/assets/homePreview.png)
 
 #### Mobile View:
+
 ![](./src/assets/mobileLoginPreview.png)
 ![](./src/assets/mobileHomePreview.png)
 
@@ -87,6 +106,8 @@ Check out the live app: [Movieflix](https://movieflix-project.netlify.app)
 - [Tailwind CSS](https://tailwindcss.com/docs) - This was my guide for any blockers/issues that i faced while implementing the css classes.
 - [React Router](https://reactrouter.com/) - The go-to guide for anything related to react routing.
 - [Redux](https://redux.js.org/) - This covers all the information needed to get started with redux. I'd recommend it to anyone still learning redux.
+- [Firebase](https://firebase.google.com/docs/auth/web/start) - This is the official guide that provides all the information needed to configure firebase in our apps.
+
 ---
 
 ## Author
