@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import GptSearchPage from "./GptSearchPage";
 
 const Browse = () => {
-  const showGptSearch = useSelector((store) => store.gpt?.showGptSearch);
+  const showGptSearch = useSelector((store) => store.rootReducer?.gpt?.showGptSearch);
 
   useNowPlayingMovies();
   usePopularMovies();

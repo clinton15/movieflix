@@ -13,8 +13,8 @@ import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const navigate = useNavigate();
-  const user = useSelector((store) => store.user?.user);
-  const lang = useSelector(store => store.user.lang);
+  const user = useSelector((store) => store.rootReducer?.user?.user);
+  const lang = useSelector(store => store.rootReducer?.user.lang);
   // const showGptSearch = useSelector((store) => store.gpt?.showGptSearch);
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
@@ -48,6 +48,7 @@ const Header = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
+        dispatch({ type: 'RESET' })
         // Sign-out successful.
       })
       .catch((error) => {

@@ -5,11 +5,11 @@ import { useTranslation } from "react-i18next";
 const SecondaryContainer = () => {
   const { t } = useTranslation();
   const nowPlayingMovies = useSelector(
-    (store) => store.movies?.nowPlayingMovies
+    (store) => store.rootReducer?.movies?.nowPlayingMovies
   );
-  const popularMovies = useSelector((store) => store.movies?.popularMovies);
-  const topRatedMovies = useSelector((store) => store.movies?.topRatedMovies);
-  const upcomingMovies = useSelector((store) => store.movies?.upcomingMovies);
+  const popularMovies = useSelector((store) => store.rootReducer?.movies?.popularMovies);
+  const topRatedMovies = useSelector((store) => store.rootReducer?.movies?.topRatedMovies);
+  const upcomingMovies = useSelector((store) => store.rootReducer?.movies?.upcomingMovies);
 
   return (
     <div className="bg-black pb-10 px-8">
